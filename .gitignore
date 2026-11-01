@@ -60,3 +60,26 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+# Silicium
+build/
+Silicium.xcodeproj/
+.swiftpm/
+SiliciumKit/.build/
+.DS_Store
+
+# Local credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+
+# Local monitoring data
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

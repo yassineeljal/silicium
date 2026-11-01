@@ -1,0 +1,21 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  build-test:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Outils
+        run: brew install xcodegen swiftlint
+      - name: SwiftLint
+        run: swiftlint --quiet
+        continue-on-error: true
+      - name: Tests des paquets
+        run: swift test --package-path SiliciumKit
+      - name: Build de l'app
+        run: |
+          xcodegen generate
+          xcodebuild -project Silicium.xcodeproj -scheme Silicium -configuration Release -derivedDataPath build CODE_SIGNING_ALLOWED=NO build
